@@ -8,7 +8,6 @@ import { ApiRequestService } from './core/services/api-requests/ApiRequest.servi
 export class AppComponent implements OnInit{
   title = 'NotSpotifyClient';
   constructor( private apiService: ApiRequestService) {}
-
   ngOnInit()
   {
   }

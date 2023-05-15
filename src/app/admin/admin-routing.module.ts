@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ClientInitialComponent } from './client-initial/client-initial.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from '../shared/layout/layout.component';
 const routes: Routes = [
   {
@@ -9,17 +9,16 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'client-initial'
+    redirectTo: 'dashboard'
   },
   {
-    path: 'client-initial',
-    component: ClientInitialComponent,
+    path: 'dashboard',
+    component: DashboardComponent,
   }
-
   ]}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ClientRoutingModule { }
+export class AdminRoutingModule { }
