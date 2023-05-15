@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ClientSharedComponent } from './client-shared/client-shared/client-shared.component';
+import { ClientInitialComponent } from './client-initial/client-initial.component';
 const routes: Routes = [
   {
-  path: '', component: ClientSharedComponent,
+  path: '', component: ClientInitialComponent,
   children: [
   {
     path: '',

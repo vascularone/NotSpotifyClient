@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ClientCurrentmusicComponent } from './client/client-currentmusic/client-currentmusic.component';
+import { ClientInitialComponent } from './client/client-initial/client-initial.component';
 
 @NgModule({
   declarations: [

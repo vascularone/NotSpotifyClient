@@ -7,6 +7,8 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { SongDTO } from '../../models/song.dto';
+import { ResponseDTO } from '../../models/response.dto';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,15 +17,15 @@ export class ApiRequestService {
     private http: HttpClient,
   ) {}
 
-  firstMethod() : Observable<any>
+  firstMethod() : Observable<ResponseDTO<SongDTO[]>>
   {
-    // try{
-      var url = environment.apiURL + '/api/Songs/GetSongStringified';
-      return this.http.get<any>(url);
-    // } catch(error)
-    // {
-    //   console.error(error);
-    //   return <any>null;
-    // }
+    try{
+      var url = environment.apiURL + '/api/Songs/GetAllSongs';
+      return this.http.get<ResponseDTO<SongDTO[]>>(url);
+    } catch(error)
+    {
+      console.error(error);
+      return null;
+    }
   }
 }

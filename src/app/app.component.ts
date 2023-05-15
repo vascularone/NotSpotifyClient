@@ -3,8 +3,7 @@ import { ApiRequestService } from './core/services/api-requests/ApiRequest.servi
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit{
   title = 'NotSpotifyClient';
@@ -12,14 +11,5 @@ export class AppComponent implements OnInit{
 
   ngOnInit()
   {
-    this.apiService.firstMethod().subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (res) => {
-        console.log(res);
-      }
-
-    })
   }
 }

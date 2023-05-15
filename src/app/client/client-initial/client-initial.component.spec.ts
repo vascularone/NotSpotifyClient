@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ClientSharedComponent } from './client-shared.component';
+import { ClientInitialComponent } from './client-initial.component';
 
 describe('ClientSharedComponent', () => {
-  let component: ClientSharedComponent;
-  let fixture: ComponentFixture<ClientSharedComponent>;
+  let component: ClientInitialComponent;
+  let fixture: ComponentFixture<ClientInitialComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClientSharedComponent ]
+      declarations: [ ClientInitialComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClientSharedComponent);
+    fixture = TestBed.createComponent(ClientInitialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
