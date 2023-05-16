@@ -1,6 +1,6 @@
 <div class="wrapper" >
   <div *ngFor="let song of songs">
-    <div class="card">
+    <div class="card" (click)="setCurrentSong(song)">
     <div class="image">
         <img src="{{song.linkRef}}" alt="">
     </div>

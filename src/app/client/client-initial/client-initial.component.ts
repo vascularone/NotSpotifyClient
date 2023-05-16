@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DashboardComponent } from 'src/app/admin/dashboard/dashboard.component';
 import { SongDTO } from 'src/app/core/models/song.dto';
 import { ApiRequestService } from 'src/app/core/services/api-requests/ApiRequest.service';
+import { CurrentMusicService } from 'src/app/core/services/api-requests/CurrentMusic.service';
 
 @Component({
   selector: 'app-client-shared',
@@ -12,18 +13,20 @@ import { ApiRequestService } from 'src/app/core/services/api-requests/ApiRequest
 export class ClientInitialComponent implements OnInit {
 
   songs: SongDTO[] = [];
-  constructor(private apiService: ApiRequestService, private router: Router) { }
+  constructor(private apiService: ApiRequestService, private router: Router, private currentMusicService: CurrentMusicService) { }
 
   ngOnInit() {
     this.apiService.firstMethod().subscribe(res =>
       {
         this.songs = res.data;
-        console.log(res.data);
+        // console.log(res.data);
       });
   }
-  sayHello()
+  setCurrentSong(song: SongDTO)
   {
-    this.router.navigate(['admin/dashboard']);
+    this.apiService.setCurrentSong(song).subscribe(() => {
+      this.currentMusicService.setCurrentSong(song);
+    });
   }
 
 }

@@ -39,4 +39,28 @@ export class ApiRequestService {
       return null;
     }
   }
+
+  setCurrentSong(song: SongDTO) : any
+  {
+    try {
+      var url = environment.apiURL + '/api/Songs/SetCurrentSong';
+      return this.http.post<any>(url, song);
+    } catch(error)
+    {
+      console.error(error);
+      return null;
+    }
+  }
+
+  getCurrentSong() : Observable<SongDTO>
+  {
+    try {
+      var url = environment.apiURL + '/api/Songs/GetCurrentSong';
+      return this.http.get<SongDTO>(url);
+    } catch(error)
+    {
+      console.error(error);
+      return null;
+    }
+  }
 }
