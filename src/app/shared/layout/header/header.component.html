@@ -1,11 +1,11 @@
 <div class="wrapper">
-  <header>
-    <nav
-      class="navbar"
-    >
-        <img src="../../../assets/notSpotifyLogo2.png" alt="noLogo" class="notSpotifyLogo" [routerLink]="['/']"/>
-        <input class="search-bar" placeholder="Search" />
-        <span class="spotifyUser">Rinor</span>
-    </nav>
-  </header>
+  <div class="notSpotifyLogoDiv">
+    <img src="../../../assets/notSpotifyLogo2.png" alt="noLogo" class="notSpotifyLogo" [routerLink]="['/']"/>
+  </div>
+  <input class="search-bar" placeholder="Search" />
+  <div class="info">
+    <span class="user-info">
+      <app-user [name]="name"></app-user>
+    </span>
+  </div>
 </div>

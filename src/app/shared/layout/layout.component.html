@@ -1,8 +1,12 @@
 <div class="layout-container">
   <app-header></app-header>
   <div class="layout-wrapper">
+    <app-sidebar></app-sidebar>
     <div class="content">
-        <router-outlet></router-outlet>
+        <div class="mainTable">
+          <router-outlet></router-outlet>
+        </div>
+      <app-currentmusic></app-currentmusic>
     </div>
   </div>
  </div>

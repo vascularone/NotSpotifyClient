@@ -11,9 +11,15 @@ import { ApiRequestService } from 'src/app/core/services/api-requests/ApiRequest
 })
 export class ClientInitialComponent implements OnInit {
 
+  songs: SongDTO[] = [];
   constructor(private apiService: ApiRequestService, private router: Router) { }
 
   ngOnInit() {
+    this.apiService.firstMethod().subscribe(res =>
+      {
+        this.songs = res.data;
+        console.log(res.data);
+      });
   }
   sayHello()
   {

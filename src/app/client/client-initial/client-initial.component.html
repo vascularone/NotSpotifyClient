@@ -1,18 +1,23 @@
-<!-- <div class="wrapper">
-  <header>
-    <nav
-      class="navbar"
-    >
-        <img src="../../../assets/notSpotifyLogo2.png" alt="noLogo" class="notSpotifyLogo" [routerLink]="['/']"/>
-        <input class="search-bar" placeholder="Search" />
-        <span class="spotifyUser">Rinor</span>
-    </nav>
-  </header>
-  <section>
-    <span (click)="sayHello()">Library</span>
-    <span>Playlists</span>
-    <span>Library</span>
-    <span>Settings</span>
-  </section>
-  <app-client-currentmusic></app-client-currentmusic>
-</div> -->
+<div class="wrapper">
+  <table>
+    <tr>
+      <th>
+        Artist
+        <hr>
+      </th>
+      <th>
+        Song name
+        <hr>
+      </th>
+    </tr>
+
+    <tr *ngFor="let song of songs">
+      <td>
+        {{ song.artist }}
+      </td>
+      <td>
+        {{ song.name }}
+      </td>
+    </tr>
+  </table>
+</div>
