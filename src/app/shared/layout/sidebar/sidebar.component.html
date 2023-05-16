@@ -1,3 +1,5 @@
-<p>
-  sidebar works!
-</p>
+<div class="sidebar-container">
+  <div *ngFor="let item of sidebarItems" class="sidebar-items">
+      <app-side-item [item]="item" (click)="onItemSelect(item)"></app-side-item>
+  </div>
+</div>

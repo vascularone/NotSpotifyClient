@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { Router } from '@angular/router';
+import { SidebarItem } from 'src/app/core/models/sidebar-item.model';
 
 @Component({
   selector: 'app-side-item',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() item: SidebarItem;
 
-  ngOnInit() {
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+  }
+
+  navigateTo(sidebarItem: SidebarItem) {
+    this.router.navigate([sidebarItem.route]);
   }
 
 }

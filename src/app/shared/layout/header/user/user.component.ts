@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  items: MenuItem[] = [
+    { label: 'Log Out', icon: 'pi pi-fw pi-sign-out', command: () => this.signOut() },
+  ];
+  @Input() name: string;
 
+  constructor(private router: Router) { }
+
+  private signOut(): void {
+    this.router.navigate(["client/signout"]);
+  }
   ngOnInit() {
   }
-
 }

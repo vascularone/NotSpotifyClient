@@ -1,0 +1,13 @@
+.user-info-container {
+  display: flex;
+  gap: 3vh;
+}
+.info {
+      display: flex;
+      flex-direction: column;
+}
+.name {
+          font-size: 1.5em;
+          font-weight: 500;
+          color: #D66060;
+}

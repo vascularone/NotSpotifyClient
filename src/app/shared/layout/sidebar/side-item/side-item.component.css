@@ -1,0 +1,26 @@
+.sidebar-item {
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #D66060;
+  transition: 200ms;
+
+}
+.name {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.sidebar-item:hover {
+  background-color: #ff726f;
+  color:black;
+}
+
+.selected {
+  color: black;
+  background: #D66060;
+}
