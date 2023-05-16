@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DashboardComponent } from 'src/app/admin/dashboard/dashboard.component';
 import { SongDTO } from 'src/app/core/models/song.dto';
 import { ApiRequestService } from 'src/app/core/services/api-requests/ApiRequest.service';
 
@@ -9,9 +11,13 @@ import { ApiRequestService } from 'src/app/core/services/api-requests/ApiRequest
 })
 export class ClientInitialComponent implements OnInit {
 
-  constructor(private apiService: ApiRequestService) { }
+  constructor(private apiService: ApiRequestService, private router: Router) { }
 
   ngOnInit() {
+  }
+  sayHello()
+  {
+    this.router.navigate(['admin/dashboard']);
   }
 
 }
