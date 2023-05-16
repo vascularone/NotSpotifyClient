@@ -1,1 +1,39 @@
+.wrapper {
+  width:90%;
+  height:70vh;
+  display:grid;
+  grid-template-columns: repeat(3,30%);
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  height: 200px;
+  width: 400px;
+  display: flex;
+  border-radius: 5px;
+}
 
+.card img {
+  height: 100px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4);
+}
+
+.card .content {
+  color: #ffffff;
+}
+
+.controlls {
+  margin: 10px 0;
+}
+
+.controlls a {
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.controlls .fa {
+  color: #ffffff;
+  height: 60px;
+}
