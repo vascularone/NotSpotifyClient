@@ -14,3 +14,18 @@
 .current-music span {
     color:black;
 }
+.img {
+  width:60px;
+  height:60px;
+  border-radius: 50%;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+
+  100%
+  {
+    transform:rotate(360deg);
+  }
+
+}

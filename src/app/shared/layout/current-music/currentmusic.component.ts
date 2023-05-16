@@ -9,6 +9,7 @@ import { ApiRequestService } from 'src/app/core/services/api-requests/ApiRequest
 })
 export class CurrentmusicComponent implements OnInit {
 
+  song: SongDTO = new SongDTO();
   songs: SongDTO[] = [];
   constructor(private apiService: ApiRequestService) { }
 
@@ -18,6 +19,14 @@ export class CurrentmusicComponent implements OnInit {
         this.songs = res.data;
         console.log(res.data);
       });
+      this.getSongById(2123);
+  }
+
+  getSongById(id:number) {
+    this.apiService.getSongById(id).subscribe(res => {
+      this.song = res.data;
+      console.log(this.song);
+    })
   }
 
 }

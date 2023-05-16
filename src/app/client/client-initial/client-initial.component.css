@@ -6,11 +6,21 @@
   justify-content: center;
   align-items: center;
 }
+.image, .content {
+  height:fit-content;
+  width:fit-content;
+}
 .card {
-  height: 200px;
-  width: 400px;
+  height: fit-content;
+  width: fit-content;
   display: flex;
   border-radius: 5px;
+  transition: all 0.5s ease;
+}
+.card:hover {
+  cursor:pointer;
+  transition: all 0.5s ease;
+  transform: scale(1.1);
 }
 
 .card img {
@@ -22,18 +32,4 @@
 
 .card .content {
   color: #ffffff;
-}
-
-.controlls {
-  margin: 10px 0;
-}
-
-.controlls a {
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-.controlls .fa {
-  color: #ffffff;
-  height: 60px;
 }

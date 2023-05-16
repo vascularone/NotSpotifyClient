@@ -28,4 +28,15 @@ export class ApiRequestService {
       return null;
     }
   }
+  getSongById(id:number): Observable<ResponseDTO<SongDTO>>
+  {
+    try {
+      var url = environment.apiURL + '/api/Songs/GetSongById?id=' + id;
+      return this.http.get<ResponseDTO<SongDTO>>(url);
+    } catch(error)
+    {
+      console.error(error);
+      return null;
+    }
+  }
 }
