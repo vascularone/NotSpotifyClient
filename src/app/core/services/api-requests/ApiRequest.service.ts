@@ -52,11 +52,11 @@ export class ApiRequestService {
     }
   }
 
-  getCurrentSong() : Observable<SongDTO>
+  getCurrentSong() : Observable<ResponseDTO<SongDTO>>
   {
     try {
       var url = environment.apiURL + '/api/Songs/GetCurrentSong';
-      return this.http.get<SongDTO>(url);
+      return this.http.get<ResponseDTO<SongDTO>>(url);
     } catch(error)
     {
       console.error(error);
