@@ -38,25 +38,26 @@ export class SidebarComponent implements OnInit {
         selected: false,
       });
     }
+
     if (this.isClient == true) {
       this.sidebarItems.push({
         name: 'Playlists',
         icon: 'fa-phone',
-        route: '/admin/dashboard',
+        route: '/client/playlist',
         selected: false,
       });
 
       this.sidebarItems.push({
         name: 'Library',
         icon: 'fa-file',
-        route: '/client/client-initial',
+        route: '/client/library',
         selected: false,
       });
 
       this.sidebarItems.push({
         name: 'Settings',
         icon: 'fa-calendar-days',
-        route: '/admin/dashboard',
+        route: '/client/settings',
         selected: false,
       });
     }

@@ -6,6 +6,8 @@ import { ClientInitialComponent } from './client-initial/client-initial.componen
 import { SharedModule } from '../shared/shared.module';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { LibraryComponent } from './library/library.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 @NgModule({
   imports: [
@@ -17,6 +19,8 @@ import { ButtonModule } from 'primeng/button';
   ],
   declarations: [
     ClientInitialComponent,
+    LibraryComponent,
+    PlaylistComponent,
   ],
   providers: [ApiRequestService],
 })
