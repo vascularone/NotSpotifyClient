@@ -1,4 +1,4 @@
-<div class="sidebar-item"  (click)="navigateTo(item)" [ngClass]="{ 'selected': item.selected}">
-  <i class="fa-solid" [ngClass]="item.icon"></i>
-  <span class="name">{{item.name}}</span>
+<div class="sidebar-item"  (click)="navigateTo(item)" [ngClass]="{ 'selected': item?.selected}">
+  <i class="fa-solid" [ngClass]="item?.icon"></i>
+  <span class="name">{{item?.name}}</span>
 </div>

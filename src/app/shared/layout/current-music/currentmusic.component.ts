@@ -15,24 +15,22 @@ export class CurrentmusicComponent implements OnInit {
   constructor(private apiService: ApiRequestService, private currentMusicService: CurrentMusicService) { }
 
   ngOnInit() {
-    this.apiService.getCurrentSong().subscribe(res => {
-      this.song = res.data;
-      console.log(res.data);
-    })
     this.getCurrentSong();
   }
 
   getSongById(id:number) {
     this.apiService.getSongById(id).subscribe(res => {
       this.song = res.data;
-      // console.log(this.song);
     })
   }
   getCurrentSong()
   {
     this.apiService.getCurrentSong().subscribe(res => {
-      this.currentMusicService.getCurrentSong().subscribe(song => {
-        this.song = song;
+      this.currentMusicService.getCurrentSong().subscribe(p => {
+        if (p != null)
+        this.song = p;
+        else
+        this.song = res.data;
       });
     })
   }

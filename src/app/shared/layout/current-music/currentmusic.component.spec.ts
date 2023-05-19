@@ -1,22 +1,23 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { PlaylistComponent } from './playlist.component';
 import { ApiRequestService } from 'src/app/core/services/api-requests/ApiRequest.service';
 import { of } from 'rxjs';
 import { ResponseDTO } from 'src/app/core/models/response.dto';
 import { Playlist } from 'src/app/core/models/playlist.dto';
+import { CurrentmusicComponent } from './currentmusic.component';
+import { SongDTO } from 'src/app/core/models/song.dto';
 
-describe('PlaylistComponent', () => {
-  let component: PlaylistComponent;
-  let fixture: ComponentFixture<PlaylistComponent>;
+describe('CurrentmusicComponent', () => {
+  let component: CurrentmusicComponent;
+  let fixture: ComponentFixture<CurrentmusicComponent>;
   let apiRequestService: jasmine.SpyObj<ApiRequestService>;
 
   beforeEach(async(() => {
-    const apiRequestSpy = jasmine.createSpyObj('ApiRequestService', ['getPlaylistByUserId']);
+    const apiRequestSpy = jasmine.createSpyObj('ApiRequestService', ['getCurrentSong']);
 
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [PlaylistComponent],
+      declarations: [CurrentmusicComponent],
       providers: [{ provide: ApiRequestService, useValue: apiRequestSpy }]
     }).compileComponents();
 
@@ -24,21 +25,21 @@ describe('PlaylistComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlaylistComponent);
+    fixture = TestBed.createComponent(CurrentmusicComponent);
     component = fixture.componentInstance;
   });
 
-  it('should call getPlaylistByUserId and set the playlist property', () => {
-    const mockPlaylist: ResponseDTO<Playlist> = {
-      data: { id: 1, name: 'My Playlist' },
+  it('should get currentSong and set the currentSong accordingly', () => {
+    const mockPlaylist: ResponseDTO<SongDTO> = {
+      data: { id: 1, name: 'Ultraviolence', artist: 'Lana del rey', linkRef: 'someLink'},
       error: null,
       status: 200
     };
-    apiRequestService.getPlaylistByUserId.and.returnValue(of(mockPlaylist));
+    apiRequestService.getCurrentSong.and.returnValue(of(mockPlaylist));
 
     component.ngOnInit();
 
-    expect(apiRequestService.getPlaylistByUserId).toHaveBeenCalledWith(component.userId);
-    expect(component.playlist).toEqual(mockPlaylist.data);
+    expect(apiRequestService.getCurrentSong).toHaveBeenCalled();
+    expect(component.song).toEqual(mockPlaylist.data);
   });
 });

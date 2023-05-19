@@ -38,8 +38,13 @@ export class SidebarComponent implements OnInit {
         selected: false,
       });
     }
-
     if (this.isClient == true) {
+      this.sidebarItems.push({
+        name: 'Home',
+        icon: 'fa-home',
+        route: '/client/client-initial',
+        selected: false,
+      });
       this.sidebarItems.push({
         name: 'Playlists',
         icon: 'fa-phone',

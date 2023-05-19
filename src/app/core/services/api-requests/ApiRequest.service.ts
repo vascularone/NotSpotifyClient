@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SongDTO } from '../../models/song.dto';
 import { ResponseDTO } from '../../models/response.dto';
+import { Playlist } from '../../models/playlist.dto';
 @Injectable({
   providedIn: 'root'
 })
@@ -58,6 +59,18 @@ export class ApiRequestService {
       var url = environment.apiURL + '/api/Songs/GetCurrentSong';
       return this.http.get<ResponseDTO<SongDTO>>(url);
     } catch(error)
+    {
+      console.error(error);
+      return null;
+    }
+  }
+
+  getPlaylistByUserId(userId: number) : Observable<ResponseDTO<Playlist>>
+  {
+    try {
+      var url = environment.apiURL + '/api/Playlist/GetPlaylistsByUserId?userId=' + userId;
+      return this.http.get<ResponseDTO<Playlist>>(url);
+    } catch (error)
     {
       console.error(error);
       return null;
