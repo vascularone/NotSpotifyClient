@@ -18,7 +18,7 @@ export class ApiRequestService {
     private http: HttpClient,
   ) {}
 
-  firstMethod() : Observable<ResponseDTO<SongDTO[]>>
+  getAllSongs() : Observable<ResponseDTO<SongDTO[]>>
   {
     try{
       var url = environment.apiURL + '/api/Songs/GetAllSongs';
@@ -65,11 +65,22 @@ export class ApiRequestService {
     }
   }
 
-  getPlaylistByUserId(userId: number) : Observable<ResponseDTO<Playlist>>
+  getPlaylistByUserId(userId: number) : Observable<ResponseDTO<Playlist[]>>
   {
     try {
       var url = environment.apiURL + '/api/Playlist/GetPlaylistsByUserId?userId=' + userId;
-      return this.http.get<ResponseDTO<Playlist>>(url);
+      return this.http.get<ResponseDTO<Playlist[]>>(url);
+    } catch (error)
+    {
+      console.error(error);
+      return null;
+    }
+  }
+  getSongsByPlaylistId(id: number) : Observable<ResponseDTO<SongDTO[]>>
+  {
+    try{
+      var url = environment.apiURL + '/api/Playlist/GetSongsByPlaylistId?id=' + id;
+      return this.http.get<ResponseDTO<SongDTO[]>>(url);
     } catch (error)
     {
       console.error(error);

@@ -16,7 +16,7 @@ export class ClientInitialComponent implements OnInit {
   constructor(private apiService: ApiRequestService, private router: Router, private currentMusicService: CurrentMusicService) { }
 
   ngOnInit() {
-    this.apiService.firstMethod().subscribe(res =>
+    this.apiService.getAllSongs().subscribe(res =>
       {
         this.songs = res.data;
       });
