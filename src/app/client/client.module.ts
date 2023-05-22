@@ -8,6 +8,9 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { LibraryComponent } from './library/library.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { SettingsComponent } from './settings/settings.component';
+import { MatTabsModule } from '@angular/material/tabs';
+
 
 @NgModule({
   imports: [
@@ -16,11 +19,13 @@ import { PlaylistComponent } from './playlist/playlist.component';
     SharedModule,
     CardModule,
     ButtonModule,
+    MatTabsModule,
   ],
   declarations: [
     ClientInitialComponent,
     LibraryComponent,
     PlaylistComponent,
+    SettingsComponent,
   ],
   providers: [ApiRequestService],
 })

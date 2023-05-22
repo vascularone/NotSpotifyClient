@@ -5,6 +5,7 @@ import { ApiRequestService } from 'src/app/core/services/api-requests/ApiRequest
 import { of } from 'rxjs';
 import { ResponseDTO } from 'src/app/core/models/response.dto';
 import { Playlist } from 'src/app/core/models/playlist.dto';
+import { SongDTO } from 'src/app/core/models/song.dto';
 
 describe('PlaylistComponent', () => {
   let component: PlaylistComponent;
@@ -12,7 +13,7 @@ describe('PlaylistComponent', () => {
   let apiRequestService: jasmine.SpyObj<ApiRequestService>;
 
   beforeEach(async(() => {
-    const apiRequestSpy = jasmine.createSpyObj('ApiRequestService', ['getPlaylistByUserId']);
+    const apiRequestSpy = jasmine.createSpyObj('ApiRequestService', ['getPlaylistByUserId', 'getSongsByPlaylistId']);
 
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
@@ -29,16 +30,30 @@ describe('PlaylistComponent', () => {
   });
 
   it('should call getPlaylistByUserId and set the playlist property', () => {
-    const mockPlaylist: ResponseDTO<Playlist> = {
-      data: { id: 1, name: 'My Playlist' },
-      error: null,
-      status: 200
+    const mockPlaylist: ResponseDTO<Playlist[]> = {
+
+        data: [
+          {
+          id: 1,
+          name: 'My Playlist'
+        },
+        {
+          id: 2,
+          name: 'Your Playlist'
+        }
+      ],
+        error: null,
+        status: 200,
+
     };
     apiRequestService.getPlaylistByUserId.and.returnValue(of(mockPlaylist));
 
     component.ngOnInit();
 
     expect(apiRequestService.getPlaylistByUserId).toHaveBeenCalledWith(component.userId);
-    expect(component.playlist).toEqual(mockPlaylist.data);
+    expect(component.playlists).toEqual(mockPlaylist.data);
+  });
+  it('should call getSongsByPlaylistId and get songs from a specific playlist', () => {
+   pending();
   });
 });

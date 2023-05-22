@@ -14,7 +14,7 @@ describe('ClientInitialComponent', () => {
   let currentMusicService: jasmine.SpyObj<CurrentMusicService>;
 
   beforeEach(() => {
-    const apiRequestSpy = jasmine.createSpyObj('ApiRequestService', ['firstMethod', 'setCurrentSong']);
+    const apiRequestSpy = jasmine.createSpyObj('ApiRequestService', ['getAllSongs', 'setCurrentSong']);
     const currentMusicSpy = jasmine.createSpyObj('CurrentMusicService', ['setCurrentSong']);
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
@@ -33,17 +33,17 @@ describe('ClientInitialComponent', () => {
     currentMusicService = TestBed.inject(CurrentMusicService) as jasmine.SpyObj<CurrentMusicService>;
   });
 
-  it('should call firstMethod and set the songs property', () => {
+  it('should call getAllSongs and set the songs property', () => {
     const mockResponse: ResponseDTO<SongDTO[]> = {
       data: [{ id: 1, name: 'Song 1', artist: 'Lana Del Rey', linkRef: 'someLink' }, { id: 2, name: 'Song 2', artist: 'Rinor', linkRef: 'anotherLink'}],
       error: null,
       status: 200,
     };
-    apiRequestService.firstMethod.and.returnValue(of(mockResponse));
+    apiRequestService.getAllSongs.and.returnValue(of(mockResponse));
 
     component.ngOnInit();
 
-    expect(apiRequestService.firstMethod).toHaveBeenCalled();
+    expect(apiRequestService.getAllSongs).toHaveBeenCalled();
     expect(component.songs).toEqual(mockResponse.data);
   });
 

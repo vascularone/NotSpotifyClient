@@ -1,9 +1,10 @@
 .scrollable-panel {
   height: 400px;
   overflow-y: scroll;
-  border: 0.5px solid #D66060;
+  border-left: 0.5px solid #D66060;
   border-radius:5px;
   padding: 10px;
+  width:85%;
 }
 
 .scroll-content {
@@ -12,16 +13,6 @@
 .scrollable-panel::-webkit-scrollbar {
   width: 8px;
 }
-
 .scrollable-panel::-webkit-scrollbar-track {
   background-color: transparent;
-}
-
-.scrollable-panel::-webkit-scrollbar-thumb {
-  background-color: #D66060;
-  border-radius: 10px
-}
-
-.scrollable-panel::-webkit-scrollbar-thumb:hover {
-  background-color: #B54D4D;
 }
