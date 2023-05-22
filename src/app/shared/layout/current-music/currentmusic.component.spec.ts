@@ -13,7 +13,7 @@ describe('CurrentmusicComponent', () => {
   let apiRequestService: jasmine.SpyObj<ApiRequestService>;
 
   beforeEach(async(() => {
-    const apiRequestSpy = jasmine.createSpyObj('ApiRequestService', ['getCurrentSong']);
+    const apiRequestSpy = jasmine.createSpyObj('ApiRequestService', ['getCurrentSong', 'getSongById']);
 
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
@@ -42,4 +42,42 @@ describe('CurrentmusicComponent', () => {
     expect(apiRequestService.getCurrentSong).toHaveBeenCalled();
     expect(component.song).toEqual(mockPlaylist.data);
   });
+
+  it('should get song by specifying the id of the song', () => {
+    const songId = 1;
+    const mockSongs: ResponseDTO<SongDTO> = {
+      data :
+        {
+          id: 1,
+          name: 'this song',
+          artist: 'me',
+          linkRef: 'aLink',
+        },
+      error:null,
+      status:200,
+    };
+
+    apiRequestService.getSongById.and.returnValue(of(mockSongs));
+
+    component.getSongById(songId);
+
+    expect(component.song).toEqual(mockSongs.data);
+  });
+
+  it('should return null when song ID does not exist', () => {
+    const songId = 1;
+    const mockSongs: ResponseDTO<SongDTO> = {
+      data: null, // Simulating a case where the song ID doesn't exist
+      error: null,
+      status: 200,
+    };
+
+    apiRequestService.getSongById.and.returnValue(of(mockSongs));
+
+    component.getSongById(songId);
+
+    expect(component.song).toBeNull();
+  });
+
+
 });

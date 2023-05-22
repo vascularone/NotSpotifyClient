@@ -13,7 +13,7 @@ describe('PlaylistComponent', () => {
   let apiRequestService: jasmine.SpyObj<ApiRequestService>;
 
   beforeEach(async(() => {
-    const apiRequestSpy = jasmine.createSpyObj('ApiRequestService', ['getPlaylistByUserId', 'getSongsByPlaylistId']);
+    const apiRequestSpy = jasmine.createSpyObj('ApiRequestService', ['getPlaylistByUserId', 'getSongsByPlaylistId', 'createPlaylist']);
 
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
@@ -57,7 +57,75 @@ describe('PlaylistComponent', () => {
     expect(apiRequestService.getPlaylistByUserId).toHaveBeenCalledWith(component.userId);
     expect(component.playlists).toEqual(mockPlaylist.data);
   });
-  it('should call getSongsByPlaylistId and get songs from a specific playlist', () => {
-   pending();
+   it('should retrieve songs by playlist ID', () => {
+    const playlistId = 9;
+    const mockSongs: ResponseDTO<SongDTO[]> = {
+      data : [
+        {
+          id: 1,
+          name: 'this song',
+          artist: 'me',
+          linkRef: 'aLink',
+        }
+      ],
+      error:null,
+      status:200,
+    }
+
+    apiRequestService.getSongsByPlaylistId.and.returnValue(of(mockSongs));
+
+    component.getSongsByPlaylistId(playlistId);
+
+    expect(component.playlistSongs).toEqual(mockSongs.data);
+  });
+
+  it('should return null if there are no songs linked to the playlist', () => {
+    const playlistId = 9;
+    const mockSongs: ResponseDTO<SongDTO[]> = {
+      data: null,
+      error:null,
+      status:200,
+    }
+
+    apiRequestService.getSongsByPlaylistId.and.returnValue(of(mockSongs));
+
+    component.getSongsByPlaylistId(playlistId);
+
+    expect(component.playlistSongs).toBeNull();
+  });
+
+  it('should create a playlist ', () => {
+     const mockPlaylist: ResponseDTO<Playlist> = {
+
+        data: {
+          id: 1,
+          name: 'My Playlist',
+          description: 'no descripto',
+          linkRef: 'someLink?'
+        },
+        error: null,
+        status: 200
+    };
+
+    apiRequestService.createPlaylist.and.returnValue(of(mockPlaylist));
+
+    component.createPlaylist(mockPlaylist.data);
+
+    expect(component.playlist).toEqual(mockPlaylist.data);
+  });
+
+  it('should not create a playlist if no inputs are given', () => {
+    const mockPlaylist: ResponseDTO<Playlist> = {
+
+      data: null,
+      error: null,
+      status: 200
+  };
+
+  apiRequestService.createPlaylist.and.returnValue(of(mockPlaylist));
+
+  component.createPlaylist(mockPlaylist.data);
+
+  expect(component.playlist).toBeNull();
   });
 });

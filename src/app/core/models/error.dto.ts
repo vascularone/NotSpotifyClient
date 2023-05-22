@@ -10,6 +10,6 @@ export class ErrorDTO {
 }
 
 export enum ErrorCodes {
-  ProblemNotifyingAgents = 1000,
-  NoAgentsAvailable = 1001
+  NoSongs = 1000,
+  NoPlaylists = 1001
 }
