@@ -1,5 +1,5 @@
 export class Playlist {
-  id:number;
+  id: number;
   name:string;
   description: string;
   linkRef: string;

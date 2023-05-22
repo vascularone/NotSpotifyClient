@@ -16,3 +16,31 @@
 .scrollable-panel::-webkit-scrollbar-track {
   background-color: transparent;
 }
+.tab-group {
+  width: 100%;
+  max-width: 1100px;
+  max-height: 600px;
+}
+
+.tab-labels {
+  display: flex;
+  gap:1rem;
+}
+
+.tab-label {
+  padding: 10px;
+  background-color: black;
+  cursor: pointer;
+  color:#D66060;
+}
+
+.tab-label.active {
+  background-color: #D66060;
+  color: black;
+  border-radius: 15px;
+}
+
+.tab-content {
+  padding: 20px;
+  margin-top: 10px;
+}

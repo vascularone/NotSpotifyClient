@@ -35,11 +35,15 @@ describe('PlaylistComponent', () => {
         data: [
           {
           id: 1,
-          name: 'My Playlist'
+          name: 'My Playlist',
+          description: 'no descripto',
+          linkRef: 'someLink?'
         },
         {
           id: 2,
-          name: 'Your Playlist'
+          name: 'Your Playlist',
+          description: 'no descripto',
+          linkRef: 'someLink?'
         }
       ],
         error: null,

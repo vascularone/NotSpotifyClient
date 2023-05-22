@@ -10,15 +10,11 @@ export class SettingsComponent implements OnInit {
 
   constructor() { }
 
-  items: MenuItem[];
+  activeTabIndex = 0;
 
+  setActiveTab(index: number) {
+    this.activeTabIndex = index;
+  }
   ngOnInit() {
-        this.items = [
-            { label: 'Home', icon: 'pi pi-fw pi-home' },
-            { label: 'Calendar', icon: 'pi pi-fw pi-calendar' },
-            { label: 'Edit', icon: 'pi pi-fw pi-pencil' },
-            { label: 'Documentation', icon: 'pi pi-fw pi-file' },
-            { label: 'Settings', icon: 'pi pi-fw pi-cog' }
-          ];
   }
 }

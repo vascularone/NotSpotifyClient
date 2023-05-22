@@ -2,25 +2,45 @@
 <div class="scrollable-panel">
   <!-- Content to be scrolled -->
   <div class="scroll-content">
-    <mat-tab-group animationDuration="0ms">
-      <mat-tab label="Account">
-        <ng-template matTabContent>
-          <!-- Content for Tab 1 goes here -->
-          <p>Content of Tab 1</p>
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Privacy">
-        <ng-template matTabContent>
-          <!-- Content for Tab 2 goes here -->
-          <p>Content of Tab 2</p>
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Version">
-        <ng-template matTabContent>
-          <!-- Content for Tab 3 goes here -->
-          <p>Content of Tab 3</p>
-        </ng-template>
-      </mat-tab>
-    </mat-tab-group>
+    <div class="tab-group">
+      <div class="tab-labels">
+        <div class="tab-label" [class.active]="activeTabIndex === 0" (click)="setActiveTab(0)">Account</div>
+        <div class="tab-label" [class.active]="activeTabIndex === 1" (click)="setActiveTab(1)">Privacy</div>
+        <div class="tab-label" [class.active]="activeTabIndex === 2" (click)="setActiveTab(2)">Version</div>
+      </div>
+      <div class="tab-content">
+        <ng-container [ngSwitch]="activeTabIndex">
+          <ng-container *ngSwitchCase="0">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              </p>
+          </ng-container>
+          <ng-container *ngSwitchCase="1">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.</p>
+          </ng-container>
+          <ng-container *ngSwitchCase="2">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.</p>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+
   </div>
 </div>

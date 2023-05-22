@@ -87,4 +87,15 @@ export class ApiRequestService {
       return null;
     }
   }
+  createPlaylist(playlist: Playlist) : Observable<ResponseDTO<Playlist>>
+  {
+    try {
+      var url = environment.apiURL + '/api/Playlist/CreatePlaylist';
+      return this.http.post<ResponseDTO<Playlist>>(url, playlist);
+    } catch(error)
+    {
+      console.error(error);
+      return null;
+    }
+  }
 }
