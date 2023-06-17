@@ -10,7 +10,8 @@ import { LibraryComponent } from './library/library.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { DialogModule } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -19,7 +20,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     SharedModule,
     CardModule,
     ButtonModule,
+    FormsModule,
     MatTabsModule,
+    DialogModule,
   ],
   declarations: [
     ClientInitialComponent,

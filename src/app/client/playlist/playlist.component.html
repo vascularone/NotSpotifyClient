@@ -1,6 +1,6 @@
 <div style="display:flex; flex-direction:column;gap: 2rem">
   <div>
-    <button class="createPlaylist" (click)="createPlaylist()">Create Playlist</button>
+    <button class="createPlaylist" (click)="createPlaylistDialog()">Create Playlist</button>
   </div>
   <div class="scrollable-panel">
     <div class="scroll-content">
@@ -18,5 +18,17 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="createPlaylistDialog" [class.show]="createPlaylistVisibility">
+  <div class="playlistDialogHeader">
+    <span>Create Playlist</span>
+    <button class="createPlaylistDialogButton" type="button" (click)="createPlaylistDialog()">X</button>
+  </div>
+  <div class="playlistDialogBody">
+    <input type="text" placeholder="Playlist Name" [(ngModel)]="playlist.name">
+    <input type="text" placeholder="Playlist Description" [(ngModel)]="playlist.description">
+    <input type="text" placeholder="Photo" [(ngModel)]="playlist.linkRef">
+    <button class="createPlaylistDialogButton" type="button" (click)="createPlaylist()">Submit</button>
   </div>
 </div>

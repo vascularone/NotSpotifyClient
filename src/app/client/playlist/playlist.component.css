@@ -37,7 +37,7 @@
 }
 .createPlaylist {
   background:transparent;
-  color:#D66060;
+  color: #D66060;
   border-radius: 10px;
   border:2px solid #D66060;
   padding: 10px;
@@ -68,6 +68,58 @@
   background-color: transparent;
 }
 
+.createPlaylistDialog 
+{
+  position: absolute;
+  top:38%;
+  left:28%;
+  width: 40vw;
+  height: 20vw;
+  background-color: #D66060;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.3s ease-in-out;
+}
+.createPlaylistDialog.show {
+  opacity: 1;
+  transform: scale(1);
+}
+.createPlaylistDialog .playlistDialogHeader
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.createPlaylistDialog .playlistDialogHeader span
+{
+  font-size: 2em;
+  color: black;
+}
+.createPlaylistDialog .playlistDialogBody 
+{
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:2rem;
+}
+.createPlaylistDialogButton
+{
+  background:transparent;
+  color: black;
+  border-radius: 10px;
+  border:2px solid black;
+  padding: 10px;
+  transition:all 0.2s ease;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+.createPlaylistDialogButton:hover
+{
+  background-color: black;
+  color:#D66060;
+  cursor: pointer;
+}
 /* .scrollable-panel::-webkit-scrollbar-thumb {
   background-color: #D66060;
   border-radius: 10px

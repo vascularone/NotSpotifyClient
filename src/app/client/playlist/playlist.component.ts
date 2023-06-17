@@ -17,30 +17,57 @@ export class PlaylistComponent implements OnInit {
   songs: SongDTO[] = [];
   playlistSongs: SongDTO[] = [];
   playlist : Playlist = new Playlist();
-
+  tempPlaylist: Playlist = {
+    name: 'justOne',
+    description: 'notOne',
+    linkRef: 'whyThough',
+  };
+  createPlaylistVisibility: boolean = false;
   ngOnInit() {
     this.getPlaylistByUserId();
   }
 
+  createPlaylistDialog()
+  {
+    this.createPlaylistVisibility = ! this.createPlaylistVisibility;
+  }
+
   getPlaylistByUserId()
   {
-    this.apiRequest.getPlaylistByUserId(this.userId).subscribe(res => {
-      this.playlists = res.data;
-    })
+    try
+    {
+      this.apiRequest.getPlaylistByUserId(this.userId).subscribe(res => {
+        this.playlists = res.data;
+      })
+    } catch(error)
+    {
+      console.error(error);
+    }
   }
   getSongsByPlaylistId(id: number)
   {
-    this.apiRequest.getSongsByPlaylistId(id).subscribe(res => {
-      this.playlistSongs = res.data;
-      console.log(res.data);
-    })
+    try {
+      this.apiRequest.getSongsByPlaylistId(id).subscribe(res => {
+        this.playlistSongs = res.data;
+        console.log(res.data);
+      })
+    } catch(error)
+    {
+      console.error(error);
+    }
   }
-  createPlaylist(tempPlaylist: Playlist)
+  createPlaylist()
   {
-    this.apiRequest.createPlaylist(tempPlaylist).subscribe((res) => {
-      this.playlist = res.data;
-      console.log("playlist created");
-    })
+    try {
+      this.apiRequest.createPlaylist(this.userId, this.playlist).subscribe((res) => {
+        console.log("playlist created");
+        this.getPlaylistByUserId();
+      })
+
+    } catch( error)
+    {
+      console.error(error);
+    }
   }
 
 }

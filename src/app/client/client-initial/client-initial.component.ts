@@ -19,6 +19,7 @@ export class ClientInitialComponent implements OnInit {
     this.apiService.getAllSongs().subscribe(res =>
       {
         this.songs = res.data;
+        console.log(res.data);  
       });
   }
   setCurrentSong(song: SongDTO)

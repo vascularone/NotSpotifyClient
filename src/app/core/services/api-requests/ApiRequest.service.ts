@@ -87,10 +87,10 @@ export class ApiRequestService {
       return null;
     }
   }
-  createPlaylist(playlist: Playlist) : Observable<ResponseDTO<Playlist>>
+  createPlaylist(userId: number, playlist: Playlist) : Observable<ResponseDTO<Playlist>>
   {
     try {
-      var url = environment.apiURL + '/api/Playlist/CreatePlaylist';
+      var url = environment.apiURL + `/api/Playlist/CreatePlaylist/${userId}`;
       return this.http.post<ResponseDTO<Playlist>>(url, playlist);
     } catch(error)
     {
@@ -98,4 +98,9 @@ export class ApiRequestService {
       return null;
     }
   }
+
+  // getUserById(userId: numbeR) : Observable<ResponseDTO<User>>
+  // {
+
+  // }
 }
