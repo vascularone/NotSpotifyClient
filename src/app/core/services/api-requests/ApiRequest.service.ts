@@ -5,11 +5,14 @@ import {
   HttpHeaders,
   HttpParams,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SongDTO } from '../../models/song.dto';
 import { ResponseDTO } from '../../models/response.dto';
 import { Playlist } from '../../models/playlist.dto';
+import { User } from '../../models/user.dto';
+import { UserEdit } from '../../models/user-edit.dto';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -99,8 +102,26 @@ export class ApiRequestService {
     }
   }
 
-  // getUserById(userId: numbeR) : Observable<ResponseDTO<User>>
-  // {
+  getUserById(userId: number) : Observable<ResponseDTO<User>>
+  {
+    try {
+      var url = environment.apiURL + `/api/User/GetUserById/${userId}`;
+      return this.http.get<ResponseDTO<User>>(url);
+    } catch(error){
+      console.error(error);
+      return null;
+    }
+  }
 
-  // }
+  editUser(userId: number, user: UserEdit) : Observable<ResponseDTO<boolean>>
+  {
+    try {
+      var url = environment.apiURL + `/api/User/EditUser/${userId}`;
+      return this.http.put<ResponseDTO<boolean>>(url, user);
+    } catch(error) 
+    {
+      console.error(error);
+      return null;
+    }
+  }
 }

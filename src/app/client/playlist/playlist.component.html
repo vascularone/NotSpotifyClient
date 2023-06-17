@@ -6,7 +6,7 @@
     <div class="scroll-content">
       <div class="wrapper" >
         <div *ngFor="let playlist of playlists">
-          <div class="card" (click)="getSongsByPlaylistId(playlist.id)">
+          <div class="card" (click)="openPlaylistDialog(); getSongsByPlaylistId(1)">
             <div class="image">
               <img src="{{playlist.linkRef}}" alt="">
             </div>
@@ -30,5 +30,19 @@
     <input type="text" placeholder="Playlist Description" [(ngModel)]="playlist.description">
     <input type="text" placeholder="Photo" [(ngModel)]="playlist.linkRef">
     <button class="createPlaylistDialogButton" type="button" (click)="createPlaylist()">Submit</button>
+  </div>
+</div>
+
+<div class="openPlaylist" [class.show]="openPlaylistVisibility">
+  <div class="playlistDialogHeader">
+    <span>Playlist</span>
+    <button class="createPlaylistDialogButton" type="button" (click)="openPlaylistDialog()">X</button>
+  </div>
+  <div class="playlistDialogBody" *ngFor="let song of playlistSongs">
+    <div class="song" (click)="setCurrentSong(song)">
+      <img [src]="song.linkRef" alt="noPhoto">
+      <span>{{song.name}}</span>
+      <span>{{song.artist}}</span>
+    </div>
   </div>
 </div>

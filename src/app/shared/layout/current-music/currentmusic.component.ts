@@ -11,11 +11,14 @@ import { CurrentMusicService } from 'src/app/core/services/api-requests/CurrentM
 export class CurrentmusicComponent implements OnInit {
 
   song: SongDTO = new SongDTO();
-  songs: SongDTO[] = [];
+  progressWidth: string;
   constructor(private apiService: ApiRequestService, private currentMusicService: CurrentMusicService) { }
 
   ngOnInit() {
     this.getCurrentSong();
+    setInterval(() => {
+      this.updateProgressBar();
+    }, 1000);
   }
 
   getSongById(id:number) {
@@ -23,6 +26,20 @@ export class CurrentmusicComponent implements OnInit {
       this.song = res.data;
     })
   }
+
+  stopMusic()
+  {
+    this.currentMusicService.stopCurrentSong();
+  }
+  continueMusic()
+  {
+    this.currentMusicService.continueCurrentSong();
+  }
+  updateProgressBar(): void {
+    const progress = this.currentMusicService.getCurrentTime() / this.currentMusicService.getDuration();
+    this.progressWidth = `${progress * 100}%`;
+  }
+  
   getCurrentSong()
   {
     this.apiService.getCurrentSong().subscribe(res => {
@@ -31,8 +48,9 @@ export class CurrentmusicComponent implements OnInit {
         this.song = p;
         else
         this.song = res.data;
+
+        console.log(this.song.audioLink);
       });
     })
   }
-
 }

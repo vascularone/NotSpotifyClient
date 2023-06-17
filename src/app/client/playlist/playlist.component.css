@@ -84,6 +84,26 @@
   opacity: 1;
   transform: scale(1);
 }
+
+.openPlaylist 
+{
+  position: absolute;
+  top:38%;
+  left:28%;
+  width: 40vw;
+  height: 20vw;
+  background-color: #D66060;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.3s ease-in-out;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+}
+.openPlaylist.show {
+  opacity: 1;
+  transform: scale(1);
+}
 .createPlaylistDialog .playlistDialogHeader
 {
   display: flex;
@@ -119,6 +139,24 @@
   background-color: black;
   color:#D66060;
   cursor: pointer;
+}
+.song {
+  width: 100%;
+  background-color:black;
+  height:50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition: all 0.2s ease-in-out;
+}
+.song img 
+{
+  width:80px;
+  height:50px;
+}
+.song:hover {
+  background-color:crimson;
+  cursor:pointer;
 }
 /* .scrollable-panel::-webkit-scrollbar-thumb {
   background-color: #D66060;

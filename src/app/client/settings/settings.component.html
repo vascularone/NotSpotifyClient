@@ -11,20 +11,14 @@
       <div class="tab-content">
         <ng-container [ngSwitch]="activeTabIndex">
           <ng-container *ngSwitchCase="0">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus esse provident quidem explicabo sequi similique culpa sed soluta temporibus! Nulla porro facere assumenda explicabo eligendi consectetur, quam modi ex nostrum.
-              </p>
+             <form>
+              <p>Username: <strong>{{user.username}} (Cannot be changed)</strong><br><br></p>
+              <p>Name: <strong>{{user.name}}</strong><br><br></p>
+              <input type="text" placeholder="New Name" name="Name" [(ngModel)]="userEdit.name"><br><br>
+              <p>Email: <strong>{{user.email}}</strong><br><br></p>
+              <input type="email" placeholder="New Email" name="Email" [(ngModel)]="userEdit.email"><br><br>
+              <button type="submit" (click)="editUser(1, userEdit)">Submit</button>
+             </form>
           </ng-container>
           <ng-container *ngSwitchCase="1">
             <p><strong>Privacy Policy for NotSpotify</strong><br>

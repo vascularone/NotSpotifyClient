@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Playlist } from 'src/app/core/models/playlist.dto';
 import { SongDTO } from 'src/app/core/models/song.dto';
 import { ApiRequestService } from 'src/app/core/services/api-requests/ApiRequest.service';
+import { CurrentMusicService } from 'src/app/core/services/api-requests/CurrentMusic.service';
 
 @Component({
   selector: 'app-playlist',
@@ -12,24 +13,24 @@ import { ApiRequestService } from 'src/app/core/services/api-requests/ApiRequest
 export class PlaylistComponent implements OnInit {
 
   userId: number = 1;
-  constructor(private apiRequest: ApiRequestService, private router: Router) { }
+  constructor(private apiRequest: ApiRequestService, private router: Router, private currentMusicService: CurrentMusicService) { }
   playlists: Playlist[] = [];
   songs: SongDTO[] = [];
   playlistSongs: SongDTO[] = [];
   playlist : Playlist = new Playlist();
-  tempPlaylist: Playlist = {
-    name: 'justOne',
-    description: 'notOne',
-    linkRef: 'whyThough',
-  };
   createPlaylistVisibility: boolean = false;
+  openPlaylistVisibility: boolean = false;
   ngOnInit() {
     this.getPlaylistByUserId();
   }
 
+  openPlaylistDialog()
+  {
+    this.openPlaylistVisibility = !this.openPlaylistVisibility
+  }
   createPlaylistDialog()
   {
-    this.createPlaylistVisibility = ! this.createPlaylistVisibility;
+    this.createPlaylistVisibility = !this.createPlaylistVisibility;
   }
 
   getPlaylistByUserId()
@@ -68,6 +69,12 @@ export class PlaylistComponent implements OnInit {
     {
       console.error(error);
     }
+  }
+  setCurrentSong(song: SongDTO)
+  {
+    this.apiRequest.setCurrentSong(song).subscribe(() => {
+      this.currentMusicService.setCurrentSong(song);
+    });
   }
 
 }

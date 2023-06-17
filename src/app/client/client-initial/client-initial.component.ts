@@ -28,5 +28,6 @@ export class ClientInitialComponent implements OnInit {
       this.currentMusicService.setCurrentSong(song);
     });
   }
+  
 
 }
